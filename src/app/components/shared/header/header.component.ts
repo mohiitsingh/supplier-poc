@@ -19,5 +19,5 @@ import { MatBadgeModule } from '@angular/material/badge';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  notificationCount = 3;
+  notificationCount = 0;
 }
