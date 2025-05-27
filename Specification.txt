@@ -1,10 +1,35 @@
-1. Dashboard & UI
-A user friendly interface that provides an overview of relevant info, notification & quick acess to features
+Development of a collabration tool:
 
-2. When there is multiple tasks, would be nice to have a preview thle displaying the content when navigating throught them-without having open one by one
+Create a collabration tool with the following features:
 
-3. Home page should provide a graphical summary-New reqeusts, InProgress Requests, Closed Requests.
+ticket specific comments: Enable users to comment on specific tickets to foster discussion and provide feedback.
+One-on-One chat Features: Implement a direct messaging option for quick, private conversations between a supplier & the organisation
+Group chat functionality: Provide a group chat feature that allows users to communicate with a role-specific group, facilitating team collabration.
+Discussion forum: set up dedicated discussion forums where users can share comments and insights on specific toppics
+Exportable chat history: ensure that all chat and discussion content is exportable and maintained throughout the application lifecycle for future reference.
+Searchable communication archieve: implement a searchable archive for past communiactions, enabling user to easily reference and track discussions for 
+improved accountability
 
-4. tools for uploading, sharing, and managing documents such as Material spec, Batch release, Certification etc.
 
-5. Integrating Messaging or notification system to facilitate communication between suppliers and the organisation
+HomePage:
+
+Include a graphical summary to visually represnt all requests.
+count of open request
+count of closed request
+count of newly created request
+priority levels of all the tickets
+
+Taks Preview Feature:
+Implement a preview tile that allows users to view the content of multiple pending tasks without needing to open each one individually.
+
+Request categorisation:
+ensure that the request list on the homepage should indicates:
+which request are new and have not been reviewed 
+previously opened requests
+flagging for follow up
+
+
+create a comprehensive resource section that includes:
+easily accessible faq to address common queries from supplier
+detailed documentation outling portal navigation and essential processes.
+updated contact information for support, ensuring suppliers can easily reach out for assistance
