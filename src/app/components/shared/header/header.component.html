@@ -1,0 +1,17 @@
+<mat-toolbar>
+  <div class="brand">
+    <div class="brand-icon icon-circle icon-circle-lg icon-bg-primary">
+      <i class="bi bi-box-seam-fill bi-xl"></i>
+    </div>
+    <span>Supplier Dashboard</span>
+  </div>
+  <span class="spacer"></span>
+  <div class="header-actions">
+    <button mat-icon-button class="notification-button" [matBadge]="notificationCount" matBadgeColor="warn" [matBadgeHidden]="notificationCount === 0">
+      <i class="bi bi-bell-fill"></i>
+    </button>
+    <button mat-icon-button class="user-button">
+      <i class="bi bi-person-circle"></i>
+    </button>
+  </div>
+</mat-toolbar>

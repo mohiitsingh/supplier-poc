@@ -1,0 +1,39 @@
+<nav class="sidebar">
+  <div class="nav-section">
+    <div class="nav-section-title">Main</div>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
+        <i class="bi bi-grid-1x2-fill" matListItemIcon></i>
+        <span matListItemTitle>Dashboard</span>
+      </a>
+      <a mat-list-item [routerLink]="['/tasks']" routerLinkActive="active">
+        <i class="bi bi-list-check" matListItemIcon></i>
+        <span matListItemTitle>Tasks</span>
+      </a>
+    </mat-nav-list>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Management</div>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/documents']" routerLinkActive="active">
+        <i class="bi bi-folder2-open" matListItemIcon></i>
+        <span matListItemTitle>Documents</span>
+      </a>
+      <a mat-list-item [routerLink]="['/requests']" routerLinkActive="active">
+        <i class="bi bi-clipboard2-data" matListItemIcon></i>
+        <span matListItemTitle>Requests</span>
+      </a>
+    </mat-nav-list>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-title">Updates</div>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/notifications']" routerLinkActive="active">
+        <i class="bi bi-bell" matListItemIcon></i>
+        <span matListItemTitle>Notifications</span>
+      </a>
+    </mat-nav-list>
+  </div>
+</nav>

@@ -1,0 +1,185 @@
+.dashboard-container {
+  padding: 0;
+}
+
+h1 {
+  margin-bottom: 32px;
+  color: #1f2937;
+  font-size: 1.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h1 .bi {
+  color: var(--primary-color);
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card mat-card-content {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  margin-right: 24px;
+}
+
+.stat-icon.new {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.stat-icon.progress {
+  background-color: #fff8e1;
+  color: #ffa000;
+}
+
+.stat-icon.closed {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.stat-icon mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.stat-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.stat-number {
+  margin: 8px 0 0;
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.chart-container {
+  margin: 32px 0;
+}
+
+.chart-container mat-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.chart-container mat-card-header {
+  padding: 20px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+}
+
+.chart-container mat-card-title {
+  font-size: 1.25rem;
+  color: #1f2937;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-container .bi {
+  color: var(--primary-color);
+}
+
+.chart-container mat-card-content {
+  padding: 24px;
+}
+
+.chart-container canvas {
+  height: 300px !important;
+}
+
+.quick-actions {
+  margin-top: 32px;
+}
+
+.quick-actions h2 {
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-actions h2 .bi {
+  color: var(--primary-color);
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.action-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #1976d2;
+}
+
+.action-card mat-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+}
+
+.action-card .bi {
+  color: #1976d2;
+  margin-bottom: 16px;
+}
+
+.action-card span {
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 500;
+}

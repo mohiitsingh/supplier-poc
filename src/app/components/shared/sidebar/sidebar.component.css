@@ -1,0 +1,66 @@
+.sidebar {
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+:host ::ng-deep .mat-mdc-list-item {
+  margin: 8px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .mdc-list-item {
+  padding: 12px 16px !important;
+}
+
+:host ::ng-deep .mdc-list-item:hover {
+  background-color: #f5f9ff !important;
+}
+
+:host ::ng-deep .active {
+  background-color: #e3f2fd !important;
+  color: #1976d2;
+  font-weight: 500;
+}
+
+:host ::ng-deep .active .bi {
+  color: #1976d2;
+}
+
+:host ::ng-deep .bi {
+  margin-right: 12px;
+  color: #666;
+  transition: color 0.3s ease;
+  font-size: 1.25rem;
+}
+
+:host ::ng-deep .mdc-list-item:hover .bi {
+  color: #1976d2;
+}
+
+:host ::ng-deep .mdc-list-item__content {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #424242;
+}
+
+.nav-section {
+  margin-bottom: 24px;
+}
+
+.nav-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin: 24px 16px 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

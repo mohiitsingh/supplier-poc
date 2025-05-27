@@ -1,0 +1,85 @@
+<div class="dashboard-container">
+  <h1>
+    <i class="bi bi-speedometer2 me-2"></i>
+    Welcome to Supplier Dashboard
+  </h1>
+  
+  <div class="stats-container">
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon new">
+          <i class="bi bi-plus-circle-fill bi-xxl"></i>
+        </div>
+        <div class="stat-info">
+          <h3>New Requests</h3>
+          <p class="stat-number">{{requestStats.new}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon progress">
+          <i class="bi bi-arrow-repeat bi-xxl"></i>
+        </div>
+        <div class="stat-info">
+          <h3>In Progress</h3>
+          <p class="stat-number">{{requestStats.inProgress}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon closed">
+          <i class="bi bi-check-circle-fill bi-xxl"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Closed</h3>
+          <p class="stat-number">{{requestStats.closed}}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="chart-container">
+    <mat-card>
+      <mat-card-header>
+        <i class="bi bi-pie-chart-fill me-2"></i>
+        <mat-card-title>Request Distribution</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <canvas id="requestChart"></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="quick-actions">
+    <h2>
+      <i class="bi bi-lightning-charge-fill me-2"></i>
+      Quick Actions
+    </h2>
+    <div class="action-buttons">
+      <mat-card [routerLink]="['/documents']" class="action-card">
+        <mat-card-content>
+          <i class="bi bi-cloud-upload-fill bi-xxl"></i>
+          <span>Upload Documents</span>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card [routerLink]="['/tasks']" class="action-card">
+        <mat-card-content>
+          <i class="bi bi-kanban-fill bi-xxl"></i>
+          <span>View Tasks</span>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card [routerLink]="['/notifications']" class="action-card">
+        <mat-card-content>
+          <i class="bi bi-bell-fill bi-xxl"></i>
+          <span>Check Notifications</span>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

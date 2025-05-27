@@ -1,0 +1,156 @@
+<div class="task-preview-container">
+  <div class="task-list">
+    <h1>
+      <i class="bi bi-list-task me-2"></i>
+      Tasks
+    </h1>
+
+    <div class="tasks">
+      @for (task of tasks; track task.id) {
+        <mat-card class="task-card" [class.selected]="selectedTask?.id === task.id" (click)="toggleTaskPreview(task)">
+          <mat-card-content>
+            <div class="task-header">
+              <div class="task-title">
+                <div class="task-title-row">
+                  <h3>{{ task.title }}</h3>
+                  <div class="task-flags">
+                    @if (task.isCritical) {
+                      <i class="bi bi-exclamation-triangle-fill critical-flag" matTooltip="Critical Request"></i>
+                    }
+                    @if (task.isNew) {
+                      <i class="bi bi-star-fill new-flag" matTooltip="New Request"></i>
+                    }
+                    @if (task.needsFollowUp) {
+                      <i class="bi bi-flag-fill follow-up-flag" matTooltip="Needs Follow-up"></i>
+                    }
+                  </div>
+                </div>
+                <div class="task-meta">
+                  <span class="task-category">
+                    <i class="bi bi-folder me-1"></i>
+                    {{ task.category }}
+                  </span>
+                  <span [class]="getPriorityClass(task.priority)">
+                    <i class="bi bi-flag-fill me-1"></i>
+                    {{ task.priority }}
+                  </span>
+                  @if (task.lastViewed) {
+                    <span class="last-viewed" matTooltip="Last viewed: {{ task.lastViewed | date:'medium' }}">
+                      <i class="bi bi-eye me-1"></i>
+                      {{ getTimeAgo(task.lastViewed) }}
+                    </span>
+                  }
+                </div>
+              </div>
+              <div class="task-indicators">
+                <span [class]="getStatusClass(task.status)">{{ task.status }}</span>
+                @if (task.attachments > 0) {
+                  <span class="attachment-badge" matBadge="{{ task.attachments }}" matBadgeOverlap="false">
+                    <i class="bi bi-paperclip"></i>
+                  </span>
+                }
+              </div>
+            </div>
+            <div class="task-footer">
+              <span class="created-at">
+                <i class="bi bi-calendar2-plus me-1"></i>
+                Created {{ getTimeAgo(task.createdAt) }}
+              </span>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </div>
+
+  <div class="preview-panel" [class.active]="selectedTask">
+    @if (selectedTask) {
+      <mat-card>
+        <mat-card-content>
+          <div class="preview-header">
+            <div>
+              <div class="preview-title">
+                <h2>{{ selectedTask.title }}</h2>
+                <div class="preview-flags">
+                  @if (selectedTask.isCritical) {
+                    <i class="bi bi-exclamation-triangle-fill critical-flag" matTooltip="Critical Request"></i>
+                  }
+                  @if (selectedTask.isNew) {
+                    <i class="bi bi-star-fill new-flag" matTooltip="New Request"></i>
+                  }
+                  @if (selectedTask.needsFollowUp) {
+                    <i class="bi bi-flag-fill follow-up-flag" matTooltip="Needs Follow-up"></i>
+                  }
+                </div>
+              </div>
+              <div class="preview-meta">
+                <span class="assigned-to">
+                  <i class="bi bi-person me-1"></i>
+                  {{ selectedTask.assignedTo }}
+                </span>
+                <span class="due-date">
+                  <i class="bi bi-calendar me-1"></i>
+                  {{ selectedTask.dueDate | date:'mediumDate' }}
+                </span>
+                <span class="created-at">
+                  <i class="bi bi-calendar2-plus me-1"></i>
+                  Created {{ getTimeAgo(selectedTask.createdAt) }}
+                </span>
+              </div>
+            </div>
+            <button class="close-preview" (click)="toggleTaskPreview(selectedTask)">
+              <i class="bi bi-x-lg"></i>
+            </button>
+          </div>
+
+          <mat-divider class="my-3"></mat-divider>
+
+          <div class="preview-content">
+            <div class="preview-section">
+              <h4>Description</h4>
+              <p>{{ selectedTask.description }}</p>
+            </div>
+
+            <div class="preview-section">
+              <h4>Details</h4>
+              <div class="preview-details">
+                <div class="detail-item">
+                  <span class="detail-label">Status</span>
+                  <span [class]="getStatusClass(selectedTask.status)">{{ selectedTask.status }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Priority</span>
+                  <span [class]="getPriorityClass(selectedTask.priority)">{{ selectedTask.priority }}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Category</span>
+                  <span class="category-chip">{{ selectedTask.category }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="preview-section">
+              <h4>Activity</h4>
+              <div class="activity-stats">
+                <div class="stat-item">
+                  <i class="bi bi-paperclip"></i>
+                  <span>{{ selectedTask.attachments }} attachments</span>
+                </div>
+                <div class="stat-item">
+                  <i class="bi bi-chat"></i>
+                  <span>{{ selectedTask.comments }} comments</span>
+                </div>
+                @if (selectedTask.lastViewed) {
+                  <div class="stat-item">
+                    <i class="bi bi-eye"></i>
+                    <span>Last viewed {{ getTimeAgo(selectedTask.lastViewed) }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</div>

@@ -1,0 +1,316 @@
+.task-preview-container {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+  padding: 0;
+}
+
+.task-list {
+  flex: 1;
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.preview-panel {
+  flex: 2;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+}
+
+.preview-panel.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+h1 {
+  margin-bottom: 24px;
+  color: #1f2937;
+  font-size: 1.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h1 .bi {
+  color: var(--primary-color);
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  border-color: #1976d2;
+}
+
+.task-card.selected {
+  border-color: #1976d2;
+  background-color: #f0f7ff;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.task-title {
+  flex: 1;
+}
+
+.task-title h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.task-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.875rem;
+}
+
+.task-category {
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-indicators {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.priority-high {
+  color: #dc2626;
+}
+
+.priority-medium {
+  color: #f59e0b;
+}
+
+.priority-low {
+  color: #10b981;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-progress {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-completed {
+  background-color: #dcfce7;
+  color: #15803d;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.attachment-badge {
+  color: #6b7280;
+}
+
+/* Preview Panel Styles */
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.preview-header h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.preview-meta {
+  display: flex;
+  gap: 16px;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.close-preview {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.close-preview:hover {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.preview-section {
+  margin-bottom: 24px;
+}
+
+.preview-section h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.preview-section p {
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.preview-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.category-chip {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.activity-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+}
+
+.stat-item .bi {
+  font-size: 1rem;
+}
+
+/* Utility classes */
+.my-3 {
+  margin: 1rem 0;
+}
+
+.me-1 {
+  margin-right: 0.25rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.task-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.task-flags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.task-flags i {
+  font-size: 1rem;
+}
+
+.critical-flag {
+  color: #dc2626;
+}
+
+.new-flag {
+  color: #2563eb;
+}
+
+.follow-up-flag {
+  color: #f59e0b;
+}
+
+.last-viewed {
+  color: #6b7280;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.task-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.created-at {
+  color: #6b7280;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.preview-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.preview-flags {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.preview-flags i {
+  font-size: 1.25rem;
+}

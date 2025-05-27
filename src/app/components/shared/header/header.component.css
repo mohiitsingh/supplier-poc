@@ -1,0 +1,85 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+:host ::ng-deep .mat-toolbar {
+  background: white !important;
+  color: #424242;
+  padding: 0 24px;
+  height: 70px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #1976d2;
+}
+
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.brand-icon .bi {
+  color: white;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button {
+  margin-left: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: #f5f9ff;
+}
+
+.notification-button {
+  position: relative;
+}
+
+:host ::ng-deep .mat-badge-content {
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 4px;
+}
+
+.user-button {
+  padding: 4px;
+  border: 2px solid transparent;
+}
+
+.user-button:hover {
+  border-color: #e3f2fd;
+}
+
+.bi {
+  color: #666;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+button:hover .bi {
+  color: #1976d2;
+}

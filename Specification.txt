@@ -1,0 +1,10 @@
+1. Dashboard & UI
+A user friendly interface that provides an overview of relevant info, notification & quick acess to features
+
+2. When there is multiple tasks, would be nice to have a preview thle displaying the content when navigating throught them-without having open one by one
+
+3. Home page should provide a graphical summary-New reqeusts, InProgress Requests, Closed Requests.
+
+4. tools for uploading, sharing, and managing documents such as Material spec, Batch release, Certification etc.
+
+5. Integrating Messaging or notification system to facilitate communication between suppliers and the organisation
