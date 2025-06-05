@@ -7,7 +7,7 @@
   </div>
   <span class="spacer"></span>
   <div class="header-actions">
-    <button mat-icon-button class="notification-button" >
+    <button mat-icon-button class="notification-button" [matBadge]="notificationCount" matBadgeColor="warn" [matBadgeHidden]="notificationCount === 0">
       <i class="bi bi-bell-fill"></i>
     </button>
     <button mat-icon-button class="user-button">

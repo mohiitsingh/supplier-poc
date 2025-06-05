@@ -80,3 +80,6 @@ body {
   background-color: rgba(220, 53, 69, 0.1);
   color: var(--danger-color);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

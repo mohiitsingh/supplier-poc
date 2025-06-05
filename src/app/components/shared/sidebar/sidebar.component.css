@@ -1,21 +1,106 @@
 .sidebar {
-  width: 280px;
+  width: 350px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  padding: 16px;
   height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.toggle-btn {
+  position: sticky;
+  top: 8px;
+  right: 8px;
+  align-self: flex-end;
+  margin: 8px;
+  z-index: 2;
+}
+
+.nav-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 16px 16px 16px;
+  margin-top: 8px;
+  /* Hide scrollbar but keep functionality */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.nav-content::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Navigation Item Styles */
+.nav-item {
+  position: relative;
+  margin: 4px 0;
+}
+
+.nav-item.has-dropdown > a {
+  cursor: pointer;
+}
+
+/* Flex spacer for pushing dropdown icon to the end */
+.flex-spacer {
+  flex: 1;
+  /* margin-right: 20px; */
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+  font-size: 20px !important;
+  transition: transform 0.3s ease;
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* Submenu Styles */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+  opacity: 0;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 0 4px;
+}
+
+.submenu.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.submenu-item {
+  padding-left: 16px !important;
+  margin: 4px 0 !important;
+  font-size: 0.9em;
+}
+
+/* Material Override Styles */
+:host ::ng-deep .mat-mdc-list-item {
+  margin: 4px 0;
+  border-radius: 8px !important;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
-:host ::ng-deep .mat-mdc-list-item {
-  margin: 8px 0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
 :host ::ng-deep .mdc-list-item {
-  padding: 12px 16px !important;
+  padding: 16px 16px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 :host ::ng-deep .mdc-list-item:hover {
@@ -28,25 +113,70 @@
   font-weight: 500;
 }
 
-:host ::ng-deep .active .bi {
+:host ::ng-deep .active .mat-icon {
   color: #1976d2;
 }
 
-:host ::ng-deep .bi {
+:host ::ng-deep .mat-icon {
   margin-right: 12px;
   color: #666;
-  transition: color 0.3s ease;
-  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  font-size: 24px;
+  min-width: 24px; /* Ensure icon has minimum width */
+  display: flex;
 }
 
-:host ::ng-deep .mdc-list-item:hover .bi {
-  color: #1976d2;
+/* Collapsed state styles */
+.sidebar.collapsed .nav-content {
+  padding: 0 8px 16px 8px;
+}
+
+.sidebar.collapsed :host ::ng-deep .mat-icon {
+  margin: 0 auto !important;
+}
+
+
+.sidebar.collapsed :host ::ng-deep .mat-mdc-list-item {
+  padding: 8px !important;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.sidebar.collapsed :host ::ng-deep .mdc-list-item__content {
+  padding: 0 !important;
+  
 }
 
 :host ::ng-deep .mdc-list-item__content {
   font-size: 0.95rem;
   font-weight: 400;
   color: #424242;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Animation for submenu items */
+.submenu a {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.submenu.expanded a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hover effect for main items */
+.nav-item:hover > a {
+  background-color: #f5f9ff !important;
+}
+
+/* Active state for parent items with dropdown */
+.nav-item.has-dropdown.active > a {
+  background-color: #e3f2fd !important;
 }
 
 .nav-section {
@@ -63,4 +193,5 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: opacity 0.3s ease;
 }
