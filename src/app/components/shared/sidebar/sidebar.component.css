@@ -1,5 +1,5 @@
 .sidebar {
-  width: 352px;
+  width: 365px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -11,7 +11,7 @@
 }
 
 .sidebar.collapsed {
-  width: 80px;
+  width: 105px;
 }
 
 .toggle-btn {
@@ -19,7 +19,8 @@
   top: 8px;
   right: 8px;
   align-self: flex-end;
-  margin: 8px;
+  margin: 8px;align-self: flex-start;
+  margin: 8px 0 0px 28px;
   z-index: 2;
 }
 

@@ -21,7 +21,7 @@ interface NavItem {
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  isCollapsed = false;
+  isCollapsed = true;
   hoveredItem: NavItem | null = null;
 
   navItems: NavItem[] = [
@@ -31,17 +31,17 @@ export class SidebarComponent {
       label: 'Dashboard'
     },
     {
-      path: '/task-management',
+      path: '/tasks',
       icon: 'task',
       label: 'Task Management',
       children: [
         {
-          path: '/task-management/document',
+          path: '/tasks/document',
           icon: 'description',
           label: 'Document Management'
         },
         {
-          path: '/task-management/create',
+          path: '/tasks/create',
           icon: 'add_task',
           label: 'Create Task'
         }
