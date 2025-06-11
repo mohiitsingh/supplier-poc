@@ -1,0 +1,65 @@
+<mat-card class="dialog-preview-card">
+      <mat-card-content>
+        <div class="dialog-header">
+          <div class="dialog-title-meta">
+            <div class="preview-title">
+              <h2>{{ data.task.title }}</h2>
+            </div>
+            <div class="preview-meta">
+              <span class="assigned-to">
+                <i class="bi bi-person me-1"></i>
+                {{ data.task.assignedTo }}
+              </span>
+              <span class="due-date">
+                <i class="bi bi-calendar me-1"></i>
+                {{ data.task.dueDate | date:'mediumDate' }}
+              </span>
+              <span class="created-at">
+                <i class="bi bi-calendar2-plus me-1"></i>
+                Created {{ data.task.createdAt | date:'medium' }}
+              </span>
+            </div>
+          </div>
+          <button mat-icon-button class="close-btn" (click)="dialogRef.close()" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <mat-divider class="my-3"></mat-divider>
+        <div class="preview-content">
+          <div class="preview-section">
+            <h4>Description</h4>
+            <p>{{ data.task.description }}</p>
+          </div>
+          <div class="preview-section">
+            <h4>Details</h4>
+            <div class="preview-details">
+              <div class="detail-item">
+                <span class="detail-label">Status</span>
+                <span>{{ data.task.status }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Priority</span>
+                <span>{{ data.task.priority }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Category</span>
+                <span>{{ data.task.category }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="preview-section">
+            <h4>Activity</h4>
+            <div class="activity-stats">
+              <div class="stat-item">
+                <i class="bi bi-paperclip"></i>
+                <span>{{ data.task.attachments }} attachments</span>
+              </div>
+              <div class="stat-item">
+                <i class="bi bi-chat"></i>
+                <span>{{ data.task.comments }} comments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>

@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DocumentManagementComponent } from './document-management/document-management.component';
 import { ChatComponent } from './chat/chat.component';
 import { PerformanceMatrixComponent } from './performance-matrix/performance-matrix.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,8 @@ export const routes: Routes = [
   { path: 'tasks', 
     children: [
       { path: 'document', component: DocumentManagementComponent},
-      { path: 'create', component: TaskPreviewComponent }
+      { path: 'create', component: TaskPreviewComponent },
+      { path: ':id', component: TaskDetailComponent }
     ]
    },
   { path: 'notifications', component: NotificationsComponent },

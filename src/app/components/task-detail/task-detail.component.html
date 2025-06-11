@@ -1,0 +1,36 @@
+<div class="task-detail-page">
+      <button mat-stroked-button color="primary" class="back-btn" (click)="goBack()">
+        <i class="bi bi-arrow-left me-1"></i> Back to All Tasks
+      </button>
+      <div class="card-wrapper">
+        <mat-card *ngIf="task" class="task-detail-card">
+          <mat-card-title class="mat-card-title">{{ task.title }}</mat-card-title>
+          <mat-card-content class="mat-card-content">
+            <div class="meta-row">
+              <span><i class="bi bi-person me-1"></i> {{ task.assignedTo }}</span>
+              <span><i class="bi bi-calendar me-1"></i> {{ task.dueDate | date:'mediumDate' }}</span>
+              <span><i class="bi bi-calendar2-plus me-1"></i> Created {{ task.createdAt | date:'medium' }}</span>
+            </div>
+            <div class="section">
+              <h4>Description</h4>
+              <p>{{ task.description }}</p>
+            </div>
+            <div class="section">
+              <h4>Details</h4>
+              <div class="details-row">
+                <span><b>Status:</b> {{ task.status }}</span>
+                <span><b>Priority:</b> {{ task.priority }}</span>
+                <span><b>Category:</b> {{ task.category }}</span>
+              </div>
+            </div>
+            <div class="section">
+              <h4>Activity</h4>
+              <div class="details-row">
+                <span><i class="bi bi-paperclip"></i> {{ task.attachments }} attachments</span>
+                <span><i class="bi bi-chat"></i> {{ task.comments }} comments</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>

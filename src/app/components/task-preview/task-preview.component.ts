@@ -5,6 +5,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { TaskPreviewDialogComponent } from './task-preview-dialog/task-preview-dialog.component';
 
 interface Task {
   id: number;
@@ -33,13 +36,16 @@ interface Task {
     MatDividerModule, 
     MatChipsModule, 
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   templateUrl: './task-preview.component.html',
   styleUrls: ['./task-preview.component.css']
 })
 export class TaskPreviewComponent {
+  constructor(private router: Router, private dialog: MatDialog) {}
   selectedTask: Task | null = null;
+  mode: 'view' | 'create' = 'view';
 
   tasks: Task[] = [
     {
@@ -127,20 +133,25 @@ export class TaskPreviewComponent {
     }
   ];
 
-  toggleTaskPreview(task: Task) {
-    this.selectedTask = this.selectedTask?.id === task.id ? null : task;
-    if (this.selectedTask) {
-      this.selectedTask = {
-        ...this.selectedTask,
-        lastViewed: new Date(),
-        isNew: false
-      };
-      // Update the task in the list
-      const index = this.tasks.findIndex(t => t.id === this.selectedTask!.id);
-      if (index !== -1) {
-        this.tasks[index] = this.selectedTask;
-      }
+   setMode(mode: 'view' | 'create') {
+    this.mode = mode;
+    if (mode === 'create') {
+      this.selectedTask = null;
     }
+  }
+
+  openPreviewDialog(task: Task, event: MouseEvent) {
+    event.stopPropagation();
+    this.dialog.open(TaskPreviewDialogComponent, {
+      data: { task },
+      width: '600px',
+      maxWidth: '90vw',
+      autoFocus: false
+    });
+  }
+
+  goToTask(task: Task) {
+    this.router.navigate(['/tasks', task.id], { state: { task } });
   }
 
   getPriorityClass(priority: 'high' | 'medium' | 'low'): string {
