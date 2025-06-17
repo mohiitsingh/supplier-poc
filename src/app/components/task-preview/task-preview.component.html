@@ -76,9 +76,107 @@
       </div>
     </ng-container>
     <ng-template #createTaskBlock>
-      <div class="create-task-placeholder">
-        <h2><i class="bi bi-plus-circle me-2"></i> Create Task</h2>
-        <p>Task creation form goes here.</p>
+      <div class="create-task-form">
+        <h2><i class="bi bi-plus-circle me-2"></i> Create New Task</h2>
+        
+        <form [formGroup]="createTaskForm" (ngSubmit)="onSubmit()" class="task-form">
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title" placeholder="Enter task title">
+              <mat-error *ngIf="createTaskForm.get('title')?.hasError('required')">Title is required</mat-error>
+              <mat-error *ngIf="createTaskForm.get('title')?.hasError('minlength')">Title must be at least 3 characters</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description" rows="4" placeholder="Enter task description"></textarea>
+              <mat-error *ngIf="createTaskForm.get('description')?.hasError('required')">Description is required</mat-error>
+              <mat-error *ngIf="createTaskForm.get('description')?.hasError('minlength')">Description must be at least 10 characters</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Assign To</mat-label>
+              <input matInput formControlName="assignedTo" placeholder="Enter assignee name">
+              <mat-icon matSuffix class="chat-icon" matTooltip="Chat with assignee">
+                <i class="bi bi-chat-dots"></i>
+              </mat-icon>
+              <mat-error *ngIf="createTaskForm.get('assignedTo')?.hasError('required')">Assignee is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Region</mat-label>
+              <input matInput formControlName="region" placeholder="Enter region">
+              <mat-error *ngIf="createTaskForm.get('region')?.hasError('required')">Region is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Created By</mat-label>
+              <input matInput formControlName="createdBy" placeholder="Enter creator name">
+              <mat-icon matSuffix class="chat-icon" matTooltip="Chat with creator">
+                <i class="bi bi-chat-dots"></i>
+              </mat-icon>
+              <mat-error *ngIf="createTaskForm.get('createdBy')?.hasError('required')">Creator is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Comment</mat-label>
+              <input matInput formControlName="commentBy" placeholder="Enter commenter name">
+              <mat-error *ngIf="createTaskForm.get('commentBy')?.hasError('required')">Commenter is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <div class="file-upload-section">
+              <h3>Attachments</h3>
+              <div class="file-upload-container">
+                <input type="file" #fileInput (change)="onFileSelected($event)" multiple style="display: none">
+                <button mat-stroked-button type="button" (click)="fileInput.click()" class="upload-btn">
+                  <i class="bi bi-paperclip me-1"></i> Attach Files
+                </button>
+              </div>
+              
+              @if (attachedFiles.length > 0) {
+                <div class="attached-files">
+                  @for (file of attachedFiles; track file.name) {
+                    <div class="file-item">
+                      <div class="file-info">
+                        <i class="bi bi-file-earmark-text me-2"></i>
+                        <span class="file-name">{{ file.name }}</span>
+                        <span class="file-size">({{ formatFileSize(file.size) }})</span>
+                      </div>
+                      <button mat-icon-button color="warn" (click)="removeFile($index)" class="remove-file-btn">
+                        <i class="bi bi-x"></i>
+                      </button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+
+          
+
+          <div class="form-actions">
+            <div class="export">
+              <button mat-stroked-button type="button" (click)="exportTask()" class="export-btn">
+              <i class="bi bi-download me-1"></i> Export
+            </button>
+            </div>
+            <div class="form-action-item">
+              <button mat-button type="button" (click)="setMode('view')">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!createTaskForm.valid">
+              <i class="bi bi-plus-circle me-1"></i> Create Task
+            </button>
+            </div>
+          </div>
+        </form>
       </div>
     </ng-template>
   </div>

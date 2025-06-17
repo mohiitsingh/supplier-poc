@@ -8,6 +8,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TaskPreviewDialogComponent } from './task-preview-dialog/task-preview-dialog.component';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 interface Task {
   id: number;
@@ -25,6 +31,9 @@ interface Task {
   lastViewed?: Date;
   needsFollowUp: boolean;
   createdAt: Date;
+  region: string;
+  createdBy: string;
+  commentBy: string;
 }
 
 @Component({
@@ -37,15 +46,37 @@ interface Task {
     MatChipsModule, 
     MatBadgeModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './task-preview.component.html',
   styleUrls: ['./task-preview.component.css']
 })
 export class TaskPreviewComponent {
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router, 
+    private dialog: MatDialog,
+    private fb: FormBuilder
+  ) {
+    this.createTaskForm = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
+      assignedTo: ['', Validators.required],
+      region: ['', Validators.required],
+      createdBy: ['', Validators.required],
+      commentBy: ['', Validators.required]
+    });
+  }
+
+  createTaskForm: FormGroup;
   selectedTask: Task | null = null;
   mode: 'view' | 'create' = 'view';
+  attachedFiles: { name: string; size: number; type: string }[] = [];
 
   tasks: Task[] = [
     {
@@ -62,7 +93,10 @@ export class TaskPreviewComponent {
       isCritical: true,
       isNew: true,
       needsFollowUp: false,
-      createdAt: new Date('2024-03-25')
+      createdAt: new Date('2024-03-25'),
+      region: 'North America',
+      createdBy: 'John Doe',
+      commentBy: 'Sarah Johnson'
     },
     {
       id: 2,
@@ -79,7 +113,10 @@ export class TaskPreviewComponent {
       isNew: false,
       lastViewed: new Date('2024-03-20'),
       needsFollowUp: true,
-      createdAt: new Date('2024-03-15')
+      createdAt: new Date('2024-03-15'),
+      region: 'Europe',
+      createdBy: 'Sarah Johnson',
+      commentBy: 'John Smith'
     },
     {
       id: 3,
@@ -95,7 +132,10 @@ export class TaskPreviewComponent {
       isCritical: true,
       isNew: true,
       needsFollowUp: false,
-      createdAt: new Date('2024-03-24')
+      createdAt: new Date('2024-03-24'),
+      region: 'Asia',
+      createdBy: 'Mike Wilson',
+      commentBy: 'Sarah Johnson'
     },
     {
       id: 4,
@@ -112,7 +152,10 @@ export class TaskPreviewComponent {
       isNew: false,
       lastViewed: new Date('2024-03-22'),
       needsFollowUp: false,
-      createdAt: new Date('2024-03-10')
+      createdAt: new Date('2024-03-10'),
+      region: 'North America',
+      createdBy: 'Emily Brown',
+      commentBy: 'Sarah Johnson'
     },
     {
       id: 5,
@@ -129,14 +172,85 @@ export class TaskPreviewComponent {
       isNew: false,
       lastViewed: new Date('2024-03-18'),
       needsFollowUp: true,
-      createdAt: new Date('2024-03-01')
+      createdAt: new Date('2024-03-01'),
+      region: 'Europe',
+      createdBy: 'David Clark',
+      commentBy: 'Sarah Johnson'
     }
   ];
 
-   setMode(mode: 'view' | 'create') {
+  setMode(mode: 'view' | 'create') {
     this.mode = mode;
     if (mode === 'create') {
       this.selectedTask = null;
+      this.createTaskForm.reset();
+      this.attachedFiles = [];
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      const files = Array.from(input.files);
+      files.forEach(file => {
+        this.attachedFiles.push({
+          name: file.name,
+          size: file.size,
+          type: file.type
+        });
+      });
+    }
+  }
+
+  removeFile(index: number) {
+    this.attachedFiles.splice(index, 1);
+  }
+
+  formatFileSize(bytes: number): string {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  }
+
+  exportTask() {
+    const taskData = {
+      ...this.createTaskForm.value,
+      attachments: this.attachedFiles
+    };
+    
+    const blob = new Blob([JSON.stringify(taskData, null, 2)], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `task-${new Date().getTime()}.json`;
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  onSubmit() {
+    if (this.createTaskForm.valid) {
+      const newTask: Task = {
+        id: this.tasks.length + 1,
+        ...this.createTaskForm.value,
+        status: 'pending',
+        priority: 'medium',
+        dueDate: new Date(),
+        category: 'General',
+        attachments: this.attachedFiles.length,
+        comments: 0,
+        isCritical: false,
+        isNew: true,
+        needsFollowUp: false,
+        createdAt: new Date(),
+        region: 'North America',
+        createdBy: 'John Doe',
+        commentBy: 'Sarah Johnson'
+      };
+      
+      this.tasks.unshift(newTask);
+      this.setMode('view');
     }
   }
 
@@ -151,7 +265,7 @@ export class TaskPreviewComponent {
   }
 
   goToTask(task: Task) {
-    this.router.navigate(['/tasks', task.id], { state: { task } });
+    this.router.navigate(['/tasks', task.id]);
   }
 
   getPriorityClass(priority: 'high' | 'medium' | 'low'): string {

@@ -441,3 +441,170 @@ h1 .bi {
   font-size: 1.1em;
   margin-right: 3px;
 }
+
+.create-task-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
+  border: 1px solid #e3e8ef;
+}
+
+.create-task-form h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  width: 100%;
+}
+
+.form-row.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-actions {
+  display: flex;
+  /* justify-content: flex-end; */
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.form-action-item{
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.form-actions button {
+  min-width: 120px;
+}
+
+.form-actions button[type="submit"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-icon {
+  color: #1976d2;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-icon:hover {
+  color: #1565c0;
+}
+
+.chat-icon i {
+  font-size: 1.1rem;
+}
+
+.file-upload-section {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px dashed #90caf9;
+}
+
+.file-upload-section h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.file-upload-container {
+  margin-bottom: 16px;
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+.upload-btn:hover {
+  background: #e3f2fd;
+}
+
+.attached-files {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+}
+
+.file-name {
+  font-size: 0.875rem;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.remove-file-btn {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.remove-file-btn i {
+  font-size: 1rem;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+.export-btn:hover {
+  background: #e3f2fd;
+}

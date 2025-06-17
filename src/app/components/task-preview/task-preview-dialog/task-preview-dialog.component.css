@@ -81,13 +81,14 @@
   align-items: center;
   gap: 6px;
 }
-button[mat-icon-button] {
+button[mat-icon-button], [mat-stroked-button] {
   margin-left: 16px;
   color: #6b7280;
   transition: color 0.2s;
   cursor: pointer;
 }
-button[mat-icon-button]:hover {
+button, [mat-stroked-button]
+,[mat-icon-button]:hover {
   color: #1976d2;
   background: #e3f2fd;
 }
