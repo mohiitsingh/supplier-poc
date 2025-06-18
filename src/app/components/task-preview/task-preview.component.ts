@@ -69,6 +69,7 @@ export class TaskPreviewComponent {
       assignedTo: ['', Validators.required],
       region: ['', Validators.required],
       createdBy: ['', Validators.required],
+      priority: ['medium', Validators.required],
       commentBy: ['', Validators.required]
     });
   }
@@ -77,6 +78,11 @@ export class TaskPreviewComponent {
   selectedTask: Task | null = null;
   mode: 'view' | 'create' = 'view';
   attachedFiles: { name: string; size: number; type: string }[] = [];
+  priorities = [
+    { value: 'high', label: 'High' },
+    { value: 'medium', label: 'Medium' },
+    { value: 'low', label: 'Low' }
+  ];
 
   tasks: Task[] = [
     {

@@ -37,8 +37,8 @@ export class SidebarComponent {
       children: [
         {
           path: '/tasks/document',
-          icon: 'description',
-          label: 'Document Management'
+          icon: 'checklist',
+          label: 'View Task'
         },
         {
           path: '/tasks/create',

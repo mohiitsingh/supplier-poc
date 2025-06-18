@@ -103,7 +103,7 @@
               <mat-label>Assign To</mat-label>
               <input matInput formControlName="assignedTo" placeholder="Enter assignee name">
               <mat-icon matSuffix class="chat-icon" matTooltip="Chat with assignee">
-                <i class="bi bi-chat-dots"></i>
+                <!-- <i class="bi bi-chat-dots"></i> -->
               </mat-icon>
               <mat-error *ngIf="createTaskForm.get('assignedTo')?.hasError('required')">Assignee is required</mat-error>
             </mat-form-field>
@@ -120,15 +120,27 @@
               <mat-label>Created By</mat-label>
               <input matInput formControlName="createdBy" placeholder="Enter creator name">
               <mat-icon matSuffix class="chat-icon" matTooltip="Chat with creator">
-                <i class="bi bi-chat-dots"></i>
+                <!-- <i class="bi bi-chat-dots"></i> -->
               </mat-icon>
               <mat-error *ngIf="createTaskForm.get('createdBy')?.hasError('required')">Creator is required</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
+              <mat-label>Priority</mat-label>
+              <mat-select formControlName="priority">
+                @for (priority of priorities; track priority.value) {
+                  <mat-option [value]="priority.value">{{ priority.label }}</mat-option>
+                }
+              </mat-select>
+              <mat-error *ngIf="createTaskForm.get('priority')?.hasError('required')">Priority is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
               <mat-label>Comment</mat-label>
-              <input matInput formControlName="commentBy" placeholder="Enter commenter name">
-              <mat-error *ngIf="createTaskForm.get('commentBy')?.hasError('required')">Commenter is required</mat-error>
+              <textarea matInput formControlName="commentBy" rows="3" placeholder="Enter your comment"></textarea>
+              <mat-error *ngIf="createTaskForm.get('commentBy')?.hasError('required')">Comment is required</mat-error>
             </mat-form-field>
           </div>
 
@@ -160,8 +172,6 @@
               }
             </div>
           </div>
-
-          
 
           <div class="form-actions">
             <div class="export">
