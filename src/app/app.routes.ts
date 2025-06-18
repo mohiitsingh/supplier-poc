@@ -8,6 +8,7 @@ import { DocumentManagementComponent } from './document-management/document-mana
 import { ChatComponent } from './chat/chat.component';
 import { PerformanceMatrixComponent } from './performance-matrix/performance-matrix.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,7 @@ export const routes: Routes = [
   },
   { path: 'tasks', 
     children: [
-      { path: 'document', component: DocumentManagementComponent},
+      { path: 'view', component: TaskPreviewComponent},
       { path: 'create', component: TaskPreviewComponent },
       { path: ':id', component: TaskDetailComponent }
     ]
@@ -29,5 +30,6 @@ export const routes: Routes = [
   { path: 'requests', component: RequestSummaryComponent },
   {
     path: 'performance', component: PerformanceMatrixComponent
-  }
+  },
+  { path: 'login', component: LoginComponent }
 ];
